@@ -18,13 +18,11 @@ import javax.validation.Valid;
 public class SaveBookController {
     @Autowired
     SaveBookService saveBookService;
-    @PreAuthorize("hasAnyAuthority('ADMIN','USER')")
     @PostMapping("/addsavebook")
     public HttpEntity<?> saveBook(Book book, @Valid @RequestBody SaveBookDTO saveBookDTO) {
         ApiResponse apiResponse = saveBookService.saveBook(book,saveBookDTO);
         return ResponseEntity.status(apiResponse.isSuccess() ? HttpStatus.OK : HttpStatus.NO_CONTENT).body(apiResponse);
     }
-    @PreAuthorize("hasAnyAuthority('ADMIN','USER')")
     @GetMapping("/allsavebook")
     public HttpEntity<?> saveBook() {
         ApiResponse allSaved = saveBookService.getAllSaved();

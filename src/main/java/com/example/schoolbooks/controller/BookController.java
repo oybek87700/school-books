@@ -29,20 +29,20 @@ public class BookController {
         ApiResponse one = bookService.getOne(id);
         return ResponseEntity.status(one.isSuccess() ? HttpStatus.OK : HttpStatus.NO_CONTENT).body(one);
     }
-    @PreAuthorize("hasAuthority('ADMIN')")
+//    @PreAuthorize("hasAuthority('ADMIN')")
     @PostMapping
     public HttpEntity<?> add(@Valid @RequestBody BookDTO bookDTO) {
         ApiResponse add = bookService.add(bookDTO);
         return ResponseEntity.status(add.isSuccess() ? HttpStatus.OK : HttpStatus.NO_CONTENT).body(add);
     }
-    @PreAuthorize("hasAuthority('ADMIN')")
+//    @PreAuthorize("hasAuthority('ADMIN')")
     @PutMapping("/{id}")
     public HttpEntity<?> edit(@PathVariable Integer id, @Valid @RequestBody BookDTO bookDTO) {
 
         ApiResponse edit = bookService.edit(id, bookDTO);
         return ResponseEntity.status(edit.isSuccess() ? HttpStatus.OK : HttpStatus.NO_CONTENT).body(edit);
     }
-    @PreAuthorize("hasAuthority('ADMIN')")
+//    @PreAuthorize("hasAuthority('ADMIN')")
     @DeleteMapping("/{id}")
     public HttpEntity<?> delete(@PathVariable Integer id) {
         ApiResponse delete = bookService.delete(id);
